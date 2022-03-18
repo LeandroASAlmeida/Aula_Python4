@@ -28,6 +28,8 @@ elif opc == 3:
     print('Produto excluido')
 elif opc == 4:
    print([listInf])
+else:
+    for 
 
 
 
