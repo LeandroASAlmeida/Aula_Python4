@@ -11,7 +11,7 @@
 
 listInf = ['mouse','teclado','memoria','estabilizador']
 
-opc = int(input('Cadastrar, digite 1\nAlterar, digite 2 \nExcluir, digite 3 \nConsultar, digite 4 \nOpção: '))
+opc = int(input('Cadastrar, digite 1\nAlterar, digite 2 \nExcluir, digite 3 \nConsultar, digite 4 \nOu 5 para Sair \nOpção: '))
 print()
 if opc == 1:
     prod = input('Digite o nome do produto: ')
@@ -29,7 +29,7 @@ elif opc == 3:
 elif opc == 4:
    print([listInf])
 else:
-    for 
+    print("Programa finalizado")
 
 
 
