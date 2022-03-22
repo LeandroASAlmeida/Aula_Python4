@@ -1,57 +1,36 @@
-from direcao import inserir, excluir, visualizar, alterar
-import os #limpa o terminal
-import time #tempo para limpar
+# Você deverá implementar um sistema onde seja possível cadastrar, alterar, 
+# visualizar e excluir itens de uma lista de produtos de informática
+# Deverá ter um menu com as opções para que o usuário informe a opção desejada
+# Não poderá inserir itens duplicados
+# Caso tente alterar, visualizar ou excluir item inexistente, o sistema deve informar
+# isso para o usuário
+# Ao alterar, deverá pedir qual item deseja alterar e para qual nome
+# Caso o novo nome esteja já cadastrado, não permitir
+# A cada iteração deverá limpar a tela e mostrar o menu novamente
+# DEVERÁ SER TOTALMENTE FEITO UTILIZANDO SUBROTINAS
+# Por questões de organização, as rotinas do CRUD deverão estar em um arquivo 
+# separado e específico
+# Tempo estimado: 35 minutos. 
+import funcoesCRUD
 
 lista = []
-opc = 5
-
-while(opc != 0):
-    print("".rjust(40, "-"))
-    print("MENU PRINCIPAL".center(40, " "))
-    print("".ljust(40, "-"))
-    print("[1] - CADASTRAR ")
-    print("[2] - ALTERAR ")
-    print("[3] - VISUALIZAR ")
-    print("[4] - EXCLUIR ")
-    print("[0] - SAIR ")
-    print("".rjust(40, "-"))
-
-    opc = int(input('->'))
-    match opc:
-        case 1: 
-            os.system('cls')
-            print("".rjust(40, "-"))
-            print("CADASTRO".center(40, " "))
-            print("".ljust(40, "-"))
-            item = input("Produto: ")
-            inserir(lista, item)
+opcao = 0
+while ( opcao != 5 ):
+    opcao = funcoesCRUD.menu()
+    match opcao:
+        case 1:
+            funcoesCRUD.listar(lista)
         case 2:
-            os.system('cls')
-            print("".rjust(40, "-"))
-            print("ALTERAR ITEM".center(40, " "))
-            print("".ljust(40, "-"))
-            alterado = input("Digite o produdo que deseja alterar: ")
-            paraAlterar = input("Digite o novo valor: ")
-            alterar(lista, alterado, paraAlterar)
+            item = input('Item que deseja cadastrar: ')
+            funcoesCRUD.cadastrar(lista,item)
         case 3:
-            os.system('cls')
-            print("".rjust(40, "-"))
-            print("LISTA".center(40, " "))
-            print("".ljust(40, "-"))
-            visualizar(lista)
+            item = input('Valor: ')
+            funcoesCRUD.alterar(lista,item)
         case 4:
-            os.system('cls')
-            print("".rjust(40, "-"))
-            print("EXCLUIR ITEM".center(40, " "))
-            print("".ljust(40, "-"))           
-            excluido = input("Digite o produto que deseja remover: ")
-            excluir(lista, excluido)
-        case 0:
-            os.system('cls')
-            print("Saindo...")
-        case outroCaso: 
-            os.system('cls')
-            print('Opção inválida! ')
-
-    time.sleep(2)
-    os.system('cls')
+            if len(lista) == 0:
+                print('Lista Vazia')
+            else:
+                item = input('Informe o item que deseja excluir: ')
+                funcoesCRUD.excluir(lista,item)
+        case 5:
+            print('Obrigado')
